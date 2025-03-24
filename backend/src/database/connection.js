@@ -1,10 +1,7 @@
 import mysql2 from 'mysql2'; // Puxando a depêdencia do banco de dados
-import dotenv from 'dotenv'; // Puxando a depêdencia do .ENV 
+import dotenv from 'dotenv';
 
-
-dotenv.config(); // Carrega as variaveis do arquivo .ENV ou seja, todos dados que está lá pode ser carregado nestá aplicação agora
-
-
+dotenv.config();
 
 // Configuração de conexão com o banco
 const connection = mysql2.createConnection({
@@ -26,6 +23,11 @@ connection.connect((err) => {
     }
 
     else {
-        console.log("Conexão realizada com sucesso!")
+        console.log("FICA FELIZ AGORA O BANCO CONECTOU!!")
     }
 }); 
+
+
+console.log(process.env.DATABASE_NAME)
+
+export default connection;

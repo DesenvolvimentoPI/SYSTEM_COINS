@@ -1,8 +1,18 @@
 import express from "express";
+import "./src/database/connection.js";
+import dotenv from 'dotenv'; // Puxando a depêdencia do .ENV
+dotenv.config(); // Carrega as variaveis do arquivo .ENV ou seja, todos dados que está lá pode ser carregado nestá aplicação agora
 
-const server = express();
+
+
+
+// Teste para saber se o NODE está rodando
+const server = express(); // Puxando o framework EXPRESS para dentro de uma variavel com nome SERVER
 
 server.listen(3000, () => {
-    console.log("Servidor rodando karalho!!")
+    console.log("Servidor rodando karalho!!") // .listen para "Para escutar a porta 3000, onde o servidor está rodando"
 })
 
+
+
+console.log(process.env.DATABASE_USER)
