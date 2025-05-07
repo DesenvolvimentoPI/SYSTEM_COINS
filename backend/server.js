@@ -2,6 +2,7 @@ import express from "express";
 import "./src/database/connection.js";
 import dotenv from 'dotenv'; // Puxando a depêdencia do .ENV
 import alunoRoutes from "./src/routes/alunoRoutes.js"
+import empresasRoutes from "./src/routes/empresasRoutes.js"
 
 
 
@@ -12,6 +13,8 @@ const app = express(); // Puxando o framework EXPRESS para dentro de uma variave
 app.use(express.json());
 
 app.use('/api', alunoRoutes);
+
+app.use('/api', empresasRoutes);
 
 app.listen(3000, () => {
     console.log("Servidor rodando karalho!!") // .listen para "Para escutar a porta 3000, onde o servidor está rodando"
