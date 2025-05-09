@@ -1,4 +1,4 @@
-import { listarAlunos } from '../models/tabelaAlunos.js';
+import { listarEmpresas } from '../models/tabelaEmpresas.js';
 import { pool } from '../database/connection.js';
 import { sql } from '../database/connection.js';
 

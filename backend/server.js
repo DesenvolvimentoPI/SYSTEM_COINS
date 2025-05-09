@@ -16,8 +16,12 @@ app.use('/api', alunoRoutes);
 
 app.use('/api', empresasRoutes);
 
-app.listen(3000, () => {
-    console.log("Servidor rodando karalho!!") // .listen para "Para escutar a porta 3000, onde o servidor está rodando"
-});
-
+try {
+    app.listen(3000, () => {
+      console.log("✅ Servidor NODE rodando!");
+    });
+  } catch (err) {
+    console.error("❌ Erro ao iniciar o servidor:", err);
+  }
+  
 
