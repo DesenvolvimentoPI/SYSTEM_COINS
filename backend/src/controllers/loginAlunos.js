@@ -9,6 +9,10 @@ const login = async (req,res) => {
         return res.status(400).json({erro: "Todos os campos precisam estar preenchidos!"})
     }
 
+    if (!email.includes('@')) {
+        return res.status(500).json({erro: "Você precisa incluir um @!"})
+    }
+
     try {
         const result = await pool.request()
         .input('email', sql.VarChar, email)
