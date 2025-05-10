@@ -1,12 +1,9 @@
 // src/controllers/alunosController.js
-import { listarAlunos } from '../models/tabelaAlunos.js';
 import { pool } from '../database/connection.js';
 import { sql } from '../database/connection.js';
 import bcrypt from 'bcrypt';
 
-// Importa a conexão com o banco
-//Importa a criptografia
- 
+//ROTA DE POST
 function formatarCpfInt(cpfInt) {
     cpfInt = cpfInt.replace(/\D/g, '');  // remove tudo que não for número
     cpfInt = cpfInt.replace(/^0+/, '');  // remove zeros à esquerda
@@ -67,5 +64,18 @@ const criarCadastroAlunos= async (req, res) => {
       res.status(500).json({ erro: 'Erro ao inserir no banco de dados.' });
   }
 };
- 
+
 export default criarCadastroAlunos;
+
+// ROTA GET
+
+export async function listarAlunos(req, res) {
+    try {
+      const resultado = await pool.request().query('SELECT * FROM alunos');
+      res.json(resultado.recordset);
+    } catch (erro) {
+      console.error(erro);
+      res.status(500).json({ erro: 'Erro ao buscar alunos' });
+    }
+  }
+  
