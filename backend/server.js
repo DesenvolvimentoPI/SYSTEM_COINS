@@ -4,7 +4,8 @@ import dotenv from 'dotenv'; // Puxando a depêdencia do .ENV
 import alunoRoutes from "./src/routes/alunoRoutes.js" /* Importa rota de cadastro alunos */
 import empresasRoutes from "./src/routes/empresasRoutes.js" /* Importa rota de cadastro empresas */
 import administrativoRouter from "./src/routes/administrativoRoutes.js" /* Importa rota de cadastro administrativo */
-import loginAlunos from "./src/routes/alunosLogin.js"
+import loginAlunos from "./src/routes/alunosLogin.js" /* Importa rota de login alunos */
+import loginAdministrativo from "./src/routes/administrativoLogin.js"; /* Importa rota de login administrativo */
 
 
 
@@ -20,6 +21,13 @@ app.use('/api', empresasRoutes); /* Torna usavel rota de cadastro de empresas */
 
 app.use('/api', administrativoRouter); /* Torna usavel rota de cadastro administrativo */
 
+<<<<<<< HEAD
+=======
+app.use('/api', loginAlunos); /* Rota de login de alunos */
+
+app.use('/api', loginAdministrativo); /* Rota de login administrato */
+
+>>>>>>> 360bcf606348d7322b34a63638310eb96d01ddd8
 try {
     app.listen(3000, () => {
       console.log("✅ Servidor NODE rodando!");
