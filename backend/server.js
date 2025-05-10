@@ -21,13 +21,10 @@ app.use('/api', empresasRoutes); /* Torna usavel rota de cadastro de empresas */
 
 app.use('/api', administrativoRouter); /* Torna usavel rota de cadastro administrativo */
 
-<<<<<<< HEAD
-=======
 app.use('/api', loginAlunos); /* Rota de login de alunos */
 
 app.use('/api', loginAdministrativo); /* Rota de login administrato */
 
->>>>>>> 360bcf606348d7322b34a63638310eb96d01ddd8
 try {
     app.listen(3000, () => {
       console.log("✅ Servidor NODE rodando!");
