@@ -19,6 +19,8 @@ app.use('/api', empresasRoutes); /* Torna usavel rota de cadastro de empresas */
 
 app.use('/api', administrativoRouter) /* Torna usavel rota de cadastro administrativo */
 
+
+
 try {
     app.listen(3000, () => {
       console.log("✅ Servidor NODE rodando!");
