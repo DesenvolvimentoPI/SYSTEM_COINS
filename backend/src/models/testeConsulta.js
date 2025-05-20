@@ -7,7 +7,7 @@ async function testarConsulta() {
     
     const resultado = await conexao
       .request()
-      .query('SELECT * FROM alunos');
+      .query('SELECT * FROM administrativo');
 
     console.log('Dados retornados:');
     console.table(resultado.recordset);
