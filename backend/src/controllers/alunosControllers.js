@@ -71,7 +71,7 @@ export default criarCadastroAlunos;
 
 export async function listarAlunos(req, res) {
     try {
-      const resultado = await pool.request().query('SELECT * FROM alunos');
+      const resultado = await pool.request().query('SELECT id, nome, sobrenome, cpf, cpf_str, login FROM alunos');
       res.json(resultado.recordset);
     } catch (erro) {
       console.error(erro);
@@ -79,3 +79,76 @@ export async function listarAlunos(req, res) {
     }
   }
   
+// ROTA DELETE
+
+export async function deletarAluno(req, res) {
+  const { id } = req.params;
+  const idNum = parseInt(id); // garante que seja número
+
+  if (isNaN(idNum)) {
+    return res.status(400).json({ erro: 'ID inválido' });
+  }
+
+  try {
+    const resultado = await pool.request()
+      .input('id', sql.Int, idNum)
+      .query('DELETE FROM alunos WHERE id = @id');
+
+    if (resultado.rowsAffected[0] === 0) {
+      return res.status(404).json({ erro: 'Aluno não encontrado' });
+    }
+
+    res.json({ mensagem: 'Aluno deletado com sucesso!' });
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao deletar aluno.' });
+  }
+}
+
+// ROTA PUT
+
+export async function atualizarAluno(req, res) {
+  const { id } = req.params;
+  const { nome, sobrenome, cpf, email, senha } = req.body;
+
+  if (!nome || !sobrenome || !cpf || !email || !senha) {
+    return res.status(400).json({ erro: 'Todos os campos são obrigatórios!' });
+  }
+
+  const cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  const cpfNumInt = cpf.replace(/\D/g, '');
+  const senhaHash = await bcrypt.hash(senha, 10);
+
+  try {
+    const resultado = await pool.request()
+      .input('id', sql.Int, parseInt(id))
+      .input('nome', sql.VarChar, nome)
+      .input('sobrenome', sql.VarChar, sobrenome)
+      .input('cpf', sql.BigInt, cpfNumInt)
+      .input('cpfstr', sql.VarChar, cpfFormatado)
+      .input('email', sql.VarChar, email)
+      .input('openpassword', sql.VarChar, senha)
+      .input('passwordhash', sql.VarChar, senhaHash)
+      .query(`
+        UPDATE alunos
+        SET nome = @nome,
+            sobrenome = @sobrenome,
+            cpf = @cpf,
+            cpf_str = @cpfstr,
+            login = @email,
+            openpassword = @openpassword,
+            passwordhash = @passwordhash
+        WHERE id = @id
+      `);
+
+    if (resultado.rowsAffected[0] === 0) {
+      return res.status(404).json({ erro: 'Aluno não encontrado.' });
+    }
+
+    res.json({ mensagem: 'Aluno atualizado com sucesso!' });
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: 'Erro ao atualizar o aluno.' });
+  }
+}
+

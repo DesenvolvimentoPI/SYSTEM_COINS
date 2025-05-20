@@ -19,7 +19,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/api', alunoRoutes); /* Torna usavel rota de cadastro de alunos */
+app.use('/api/alunos', alunoRoutes); /* Torna usavel rota de cadastro de alunos */
 
 app.use('/api', empresasRoutes); /* Torna usavel rota de cadastro de empresas */
 
