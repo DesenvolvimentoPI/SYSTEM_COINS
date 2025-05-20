@@ -23,7 +23,7 @@ app.use('/api/alunos', alunoRoutes); /* Torna usavel rota de cadastro de alunos 
 
 app.use('/api', empresasRoutes); /* Torna usavel rota de cadastro de empresas */
 
-app.use('/api', administrativoRouter); /* Torna usavel rota de cadastro administrativo */
+app.use('/api/admin', administrativoRouter); /* Torna usavel rota de cadastro administrativo */
 
 app.use('/api', loginAlunos); /* Rota de login de alunos */
 

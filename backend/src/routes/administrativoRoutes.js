@@ -1,8 +1,11 @@
 import express from 'express';
-import criarCadastroAdministrativo from '../controllers/administrativoControllers.js';
+import criarCadastroAdministrativo, {atualizarAdministrativo, listarAdministrativo, deletarAdministrativo}from '../controllers/administrativoControllers.js';
 
 const router = express.Router();
 
-router.post('/admninistrativo', criarCadastroAdministrativo)
+router.get('/', listarAdministrativo);
+router.post('/', criarCadastroAdministrativo);
+router.put('/:id', atualizarAdministrativo);
+router.delete('/:id', deletarAdministrativo);
 
 export default router
