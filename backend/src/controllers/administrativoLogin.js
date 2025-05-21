@@ -31,7 +31,13 @@ const loginAdministrativo = async (req, res) => {
             return res.status(400).json({error: "Senha incorreta!"})
         }
 
-        res.status(200).json({mensage: "Usuário confirmado, bem vindo: ", resultadoConsulta: {nome: resultadoConsulta.nome}})
+        res.status(200).json({
+            mensagem: "Usuário confirmado, bem vindo!",
+            usuario: {
+              nome: resultadoConsulta.nome,
+              email: resultadoConsulta.email
+            }
+          });
 
     }catch(error){
         console.log(error)

@@ -30,7 +30,14 @@ const login = async (req,res) => {
             return res.status(401).json({erro: "Senha incorreta!"})
         }
 
-        res.status(200).json({mensagem: "Usuário authenticado com sucesso! Seja bem vindo: ", resultadoConsulta: {nome: resultadoConsulta.nome}})
+        res.status(200).json({
+            mensagem: "Usuário confirmado, bem vindo!",
+            usuario: {
+              nome: resultadoConsulta.nome,
+              email: resultadoConsulta.email
+            }
+          });
+          
     } catch (erro) {
         console.error(erro)
         res.status(500).json({error: "Erro ao encontrar o usuário"})

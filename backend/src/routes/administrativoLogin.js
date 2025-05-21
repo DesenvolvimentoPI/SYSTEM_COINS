@@ -3,6 +3,6 @@ import loginAdministrativo from '../controllers/administrativoLogin.js'
 
 const router = express.Router();
 
-router.post('/loginadministrativo', loginAdministrativo)
+router.post('/', loginAdministrativo)
 
 export default router
