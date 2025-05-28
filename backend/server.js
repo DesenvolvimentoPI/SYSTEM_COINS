@@ -7,6 +7,7 @@ import loginEmpresa from "./src/controllers/empresasLogin.js";
 import administrativoRouter from "./src/routes/administrativoRoutes.js" /* Importa rota de cadastro administrativo */
 import loginAlunos from "./src/routes/alunosLogin.js" /* Importa rota de login alunos */
 import loginAdministrativo from "./src/routes/administrativoLogin.js"; /* Importa rota de login administrativo */
+import alunoCursoRoutes from './src/routes/alunoCursoRoutes.js';
 import cors from 'cors';
 
 
@@ -32,7 +33,7 @@ app.use('/api/empresas', empresasRoutes); /* Torna usavel rota de cadastro de em
 
 app.use('/api/loginempresas', loginEmpresa); /* Torna usavel rota de cadastro de empresas */
 
-
+app.use('/api/alunos-curso', alunoCursoRoutes)
 
 try {
     app.listen(3000, () => {
