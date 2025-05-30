@@ -8,6 +8,9 @@ import administrativoRouter from "./src/routes/administrativoRoutes.js" /* Impor
 import loginAlunos from "./src/routes/alunosLogin.js" /* Importa rota de login alunos */
 import loginAdministrativo from "./src/routes/administrativoLogin.js"; /* Importa rota de login administrativo */
 import alunoCursoRoutes from './src/routes/alunoCursoRoutes.js';
+import cursoRoutes from './src/routes/cursoRoutes.js';
+import pontosGanhosRoutes from './src/routes/pontosGanhosRoutes.js';
+import pontosGastosRoutes from './src/routes/pontosGastosRoutes.js'
 import cors from 'cors';
 
 
@@ -33,7 +36,13 @@ app.use('/api/empresas', empresasRoutes); /* Torna usavel rota de cadastro de em
 
 app.use('/api/loginempresas', loginEmpresa); /* Torna usavel rota de cadastro de empresas */
 
-app.use('/api/alunos-curso', alunoCursoRoutes)
+app.use('/api/alunos-curso', alunoCursoRoutes);
+
+app.use('/api/cursos', cursoRoutes);
+
+app.use('/api/pontos-ganhos', pontosGanhosRoutes);
+
+app.use('/api/pontos-gastos', pontosGastosRoutes);
 
 try {
     app.listen(3000, () => {
