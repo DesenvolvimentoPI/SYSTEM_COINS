@@ -22,7 +22,7 @@ export async function registrarPontosGastos(idAluno, quantidade, produto) {
       .input('quantidade', quantidade)
       .input('produto', produto)
       .query(`
-        INSERT INTO extrato_pontos_gastos (id_aluno, quantidade, produto, data)
+        INSERT INTO extrato_pontos_gastos (id_aluno, pontos_gastos, produto, data_ganho)
         VALUES (@idAluno, @quantidade, @produto, GETDATE())
       `);
 
@@ -32,7 +32,7 @@ export async function registrarPontosGastos(idAluno, quantidade, produto) {
       .input('quantidade', quantidade)
       .query(`
         UPDATE pontos
-        SET saldo = saldo - @quantidade
+        SET valor_pontos = valor_pontos - @quantidade
         WHERE id_aluno = @idAluno
       `);
   } catch (erro) {
@@ -50,7 +50,7 @@ export async function listarPontosGastos(idAluno) {
       .query(`
         SELECT * FROM extrato_pontos_gastos
         WHERE id_aluno = @idAluno
-        ORDER BY data DESC
+        ORDER BY data_gasto DESC
       `);
     return resultado.recordset;
   } catch (erro) {

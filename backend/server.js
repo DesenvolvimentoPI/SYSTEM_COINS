@@ -3,7 +3,7 @@ import "./src/database/connection.js"; /* Importa conexão */
 import dotenv from 'dotenv'; // Puxando a depêdencia do .ENV
 import alunoRoutes from "./src/routes/alunoRoutes.js" /* Importa rota de cadastro alunos */
 import empresasRoutes from "./src/routes/empresasRoutes.js" /* Importa rota de cadastro empresas */
-import loginEmpresa from "./src/controllers/empresasLogin.js";
+import loginEmpresa from "./src/routes/empresasRoutes.js";
 import administrativoRouter from "./src/routes/administrativoRoutes.js" /* Importa rota de cadastro administrativo */
 import loginAlunos from "./src/routes/alunosLogin.js" /* Importa rota de login alunos */
 import loginAdministrativo from "./src/routes/administrativoLogin.js"; /* Importa rota de login administrativo */
@@ -11,6 +11,7 @@ import alunoCursoRoutes from './src/routes/alunoCursoRoutes.js';
 import cursoRoutes from './src/routes/cursoRoutes.js';
 import pontosGanhosRoutes from './src/routes/pontosGanhosRoutes.js';
 import pontosGastosRoutes from './src/routes/pontosGastosRoutes.js'
+import produtosRoutes from './src/routes/produtosRoutes.js'
 import cors from 'cors';
 
 
@@ -43,6 +44,8 @@ app.use('/api/cursos', cursoRoutes);
 app.use('/api/pontos-ganhos', pontosGanhosRoutes);
 
 app.use('/api/pontos-gastos', pontosGastosRoutes);
+
+app.use('/api/produtos', produtosRoutes)
 
 try {
     app.listen(3000, () => {
