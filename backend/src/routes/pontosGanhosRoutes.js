@@ -7,6 +7,6 @@ import {
 const router = express.Router();
 
 router.post('/', postPontosGanhos);
-router.get('/:id', getExtratoGanhos);
+router.get('/:id_aluno', getExtratoGanhos);
 
 export default router;

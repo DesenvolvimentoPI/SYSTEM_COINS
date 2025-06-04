@@ -1,42 +1,36 @@
 import {
-  registrarPontosGastos,
-  listarPontosGastos
-} from '../models/tabelaPontosGastos.js';
+  listarProdutos,
+  cadastrarProduto,
+  deletarProduto
+} from '../models/tabelaProdutos.js';
 
-// POST /api/pontos-gastos
-export async function postPontosGastos(req, res) {
-  const { id_aluno, id_produto } = req.body;
-
-  if (id_aluno === undefined || id_produto === undefined) {
-    return res.status(400).json({ mensagem: 'id_aluno e id_produto são obrigatórios.' });
-  }
-
+// GET /api/produtos
+export async function getProdutos(req, res) {
   try {
-    await registrarPontosGastos(id_aluno, id_produto);
-    res.status(201).json({ mensagem: 'Produto resgatado com sucesso e pontos descontados.' });
+    const produtos = await listarProdutos();
+    res.status(200).json(produtos);
   } catch (erro) {
-    if (erro.message === 'Produto não encontrado') {
-      return res.status(404).json({ mensagem: 'Produto não encontrado.' });
-    }
-    if (erro.message === 'Saldo insuficiente') {
-      return res.status(400).json({ mensagem: 'Saldo insuficiente para resgatar o produto.' });
-    }
-    res.status(500).json({ mensagem: 'Erro ao registrar pontos gastos.', erro: erro.message });
+    res.status(500).json({ mensagem: 'Erro ao listar produtos.', erro: erro.message });
   }
 }
 
-// GET /api/pontos-gastos/:id_aluno
-export async function getExtratoGastos(req, res) {
-  const { id_aluno } = req.params;
+// POST /api/produtos
+export async function postProduto(req, res) {
+  const { nome_produto, valor_pontos } = req.body;
+
+  if (!nome_produto || valor_pontos === undefined) {
+    return res.status(400).json({ mensagem: 'nome_produto e valor_pontos são obrigatórios.' });
+  }
 
   try {
-    const extrato = await listarPontosGastos(id_aluno);
-    res.status(200).json(extrato);
+    await cadastrarProduto({ nome_produto, valor_pontos });
+    res.status(201).json({ mensagem: 'Produto cadastrado com sucesso.' });
   } catch (erro) {
-    res.status(500).json({ mensagem: 'Erro ao listar pontos gastos.', erro: erro.message });
+    res.status(500).json({ mensagem: 'Erro ao cadastrar produto.', erro: erro.message });
   }
 }
 
+// DELETE /api/produtos/:id
 export async function deleteProduto(req, res) {
   const { id } = req.params;
 
@@ -47,4 +41,3 @@ export async function deleteProduto(req, res) {
     res.status(500).json({ mensagem: 'Erro ao deletar produto.', erro: erro.message });
   }
 }
-

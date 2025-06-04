@@ -5,11 +5,11 @@ import {
 
 // Função de conversão de nota para pontos
 function converterNotaParaPontos(nota) {
-  if (nota >= 9) return 50;
-  if (nota >= 8) return 40;
-  if (nota >= 7) return 30;
-  if (nota >= 6) return 20;
-  if (nota >= 5) return 10;
+  if (nota >= 9) return 800;
+  if (nota >= 8) return 600;
+  if (nota >= 7) return 400;
+  if (nota >= 6) return 200;
+  if (nota >= 5) return 100;
   return 0;
 }
 

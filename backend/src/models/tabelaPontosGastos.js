@@ -1,32 +1,32 @@
 import { pool } from '../database/connection.js';
 
-// Registrar gasto de pontos
-export async function registrarPontosGastos(idAluno, quantidade, produto) {
+// Registrar gasto de pontos (resgate de produto)
+export async function registrarPontosGastos(idAluno, quantidade, motivo) {
   try {
     const conexao = await pool.connect();
 
-    // Verificar saldo
+    // Verificar saldo atual
     const { recordset } = await conexao.request()
       .input('idAluno', idAluno)
-      .query('SELECT saldo FROM pontos WHERE id_aluno = @idAluno');
+      .query('SELECT valor_pontos FROM pontos WHERE id_aluno = @idAluno');
 
-    const saldoAtual = recordset[0]?.saldo ?? 0;
+    const saldoAtual = recordset[0]?.valor_pontos ?? 0;
 
     if (saldoAtual < quantidade) {
       throw new Error('Saldo insuficiente');
     }
 
-    // Inserir no extrato
+    // Inserir no extrato de pontos gastos
     await conexao.request()
       .input('idAluno', idAluno)
       .input('quantidade', quantidade)
-      .input('produto', produto)
+      .input('motivo', motivo)
       .query(`
-        INSERT INTO extrato_pontos_gastos (id_aluno, pontos_gastos, produto, data_ganho)
-        VALUES (@idAluno, @quantidade, @produto, GETDATE())
+        INSERT INTO extrato_pontos_gastos (id_aluno, pontos_gastos, motivo, data_gasto)
+        VALUES (@idAluno, @quantidade, @motivo, GETDATE())
       `);
 
-    // Subtrair do saldo
+    // Atualizar saldo na tabela pontos
     await conexao.request()
       .input('idAluno', idAluno)
       .input('quantidade', quantidade)
@@ -35,6 +35,7 @@ export async function registrarPontosGastos(idAluno, quantidade, produto) {
         SET valor_pontos = valor_pontos - @quantidade
         WHERE id_aluno = @idAluno
       `);
+
   } catch (erro) {
     console.error('Erro ao registrar pontos gastos:', erro);
     throw erro;
@@ -58,3 +59,5 @@ export async function listarPontosGastos(idAluno) {
     throw erro;
   }
 }
+
+// Exporta as duas funções corretamente

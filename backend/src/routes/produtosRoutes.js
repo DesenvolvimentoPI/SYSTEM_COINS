@@ -1,14 +1,14 @@
 import express from 'express';
 import {
-  getExtratoGastos,
-  postPontosGastos,
+  getProdutos,
+  postProduto,
   deleteProduto
 } from '../controllers/produtosControllers.js';
 
 const router = express.Router();
 
-router.get('/', getExtratoGastos);
-router.post('/', postPontosGastos);
+router.get('/', getProdutos);
+router.post('/', postProduto);
 router.delete('/:id', deleteProduto);
 
 export default router;
