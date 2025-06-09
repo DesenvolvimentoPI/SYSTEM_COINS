@@ -1,32 +1,341 @@
+:root {
+    --main-color:#516271;
+    --primary-text-color:#f6e6c9;
+    --secondary-text-color:#191919;
+    --secondary-color:rgb(16, 60, 117);
+    --secondary-bg-color:#f2bc53;
+}
+
 * {
+    font-family: "Inter", sans-serif;
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
-h1 {
-    color: #fff;
-}
-.container-principal {
-    background-image: url('../../assets/fundo.png');
-    width: 100%;
-    height: 950px;
-    color: #fff;
-    opacity: 100%;
+i {
+    background-color: var(--main-color);
+    color: var(--primary-text-color);
+    font-size: 1.5rem;
+    padding: 1rem;
 }
 
-.title {
-    margin-left: 200px;
-    color: aqua;
-    margin-top: 300px;
+/* id */
+.header{
+    min-height: 90vh;
+    background-image: url("../../assets/banner.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--primary-text-color);
+    margin-bottom: 2rem;
 }
 
-.title h1 {
-    color: #516271;
+.inner-header{
+    /* padrão linha */
+    display: flex;
+    /* alinhamento é horizontal, eixo x */
+    justify-content: space-between;
+    /* alinhamento vertical, eixo y */
+    align-items: center;
+}
+
+.brand {
+    background-color: var(--main-color);
+    padding: 1rem;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+    text-transform: uppercase;
+    margin-right: 2rem;
+}
+
+.navbar a {
+    color: var(--main-colorprimary-text-color);
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-family: "Edu NSW ACT Cursive", cursive;
+    transition: 0.2s;
+    padding: 5px;
+    border: 4px solid var(--primary-text-color);
+    border-radius: 20px;
+}
+
+
+.navbar a:hover {
+    color: var(--secondary-bg-color);
+    background-color: #516271;
+    border: #f2bc53;
+    font-weight: bolder;
+    transition: 0.2s;
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.banner.active{
+    opacity: 1; /* banner ativo é mostrado */
+}
+
+.banner{
+    max-width: 45%;
+    opacity: 0;
+    padding: 4rem;
+    position: absolute;
+}
+
+.banner h2{
     font-size: 4rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    z-index:2;
+}
+
+.banner p{
+    font-size: 1.5rem;
+    color: var(--main-color);
+    font-family: "Edu NSW ACT Cursive", cursive;
+}
+
+.square{
+    display:block;
+    width: 150px;
+    height: 150px;
+    background-color: var(--main-color);
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    z-index:1;
+}
+
+
+/* Áreas de atuação */
+.section-title{
+    color: var(--main-color);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+.section-subtitle{
+    color: var(--secondary-text-color);
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.other-services{
+    width: 100%;
+    display: flex;
+    gap:2rem;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.other-services img {
+    width: 500px;
+    height: 500px;
+}
+
+.other-services p {
+    font-size: 1.3em;
+    text-align: center;
+    color: var(--primary-text-color);
+}
+
+.other-services h4 {
+    text-align: center;
+    color: var(--secondary-bg-color);
+}
+
+.service{
+    position: relative;
+    background-color: var(--main-color);
+}
+
+
+.service-info{
+    background-color: var(--tertiary-color);
+    padding: 2rem 1.4rem;
+    min-height: 250px;
+}
+
+.service h4{
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
 }
 
-.title p {
+
+/* Colaboradores */
+.team {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .team h2 {
+    font-size: 3rem;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .team h2 span {
+    color: var(--main-color);
+  }
+  
+  .team p {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 3em;
+    color: var(--secondary-bg-color);
+    font-family: "Edu NSW ACT Cursive", cursive;
+  }
+
+/* Rodapé */
+.footer {
+    color: var(--main-color);
+    background-color: var(--primary-text-color);
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 3rem 5rem;
+  }
+  
+  
+  .footer a {
+    color: var(--primary-text-color);
+  }
+  
+  .contact-info,
+  .links-container {
+    width: 20%;
+  }
+  
+  .footer-brand {
+    margin-bottom: 2rem;
+  }
+  
+  .footer-brand h2 {
+    background-color: var(--main-color);
+    margin-bottom: 0.5rem;
+    padding: 1rem;
     color: #f2bc53;
-    font-size: 1.5rem;
-}
+  }
+  
+  .contact-info p {
+    margin-bottom: 1rem;
+  }
+  
+  .contact-info p i {
+    background-color: transparent;
+    padding: 0;
+    color: var(--main-color);
+  }
+  
+  .social-networks p {
+    margin-bottom: 1rem;
+  }
+  
+  .networks {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .footer .networks i {
+    padding: 1rem;
+  }
+  
+  .links-container h4 {
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+  
+  .links-container nav {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .links-container nav a {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+  }
+  
+  .phone-number {
+    display: flex;
+    border: 1px solid var(--main-color);
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .phone-info {
+    color: var(--secondary-color);
+  }
+  /* Mobile navbar */
+  .menu,
+  .close-menu{
+    font-size: 2rem;
+    padding: 1rem;
+    display:none;
+  }
+  .close-menu{
+    position:absolute;
+    top:0;
+    right:0;
+  }
+  .mobile-navbar{
+    position:fixed;
+    top:0;
+    left:100%;
+    height:100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 2rem;
+    transition: 0.4s;
+    z-index: 3;
+  }  
+  .mobile-navbar.menu-active{
+    left:0;
+  }
+  .mobile-navbar a{
+    color: var(--primary-text-color);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--main-color);
+  }
+  .mobile-navbar.menu-active{
+    left:0;
+  }
+  .mobile-navbar a{
+    color: var(--primary-text-color);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  /* PG Serviços titulo */
+  .titulo-pg {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3rem;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+  }
