@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
  
 export default function Tipo_login() {
     return (
-            <div className='container-principal'>
+            <div className='container-principal_tipo_login'>
                 <div className='container'>
                     <h1 className='titulo'>LOGIN</h1>
-                    <Link to='/tipo'>SOU ALUNO</Link>
-                    <Link to='/tipo'>SOU ADMINISTRATIVO</Link>
+                    <ul className='tipo_login_link'>
+                        <li><Link to='/loginAlunos'>SOU ALUNO</Link></li>
+                        <li><Link to='/loginAdministrativo'>SOU ADMINISTRATIVO</Link></li>
+                    </ul>
                 </div>
             </div>
     )

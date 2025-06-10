@@ -1,0 +1,29 @@
+import './style.css';
+import { Link } from 'react-router-dom';
+ 
+ 
+ 
+ 
+export default function Login_aluno() {
+    return (
+            <div className='container-principal_tipo_login'>
+                <div className='container'>
+                    <h1 className='titulo'>LOGIN ALUNO</h1>
+                    <form action="" className='form_login'>
+                        <div className='inputs'>
+                            <h2>E-mail</h2>
+                            <input type="email" name="" required placeholder='Digite seu E-mail'/>
+                        </div>
+                        <div className='inputs'>
+                            <h2>Senha</h2>
+                            <input type="password" name="" required placeholder='Digite sua Senha'/>
+                        </div>
+                        <div className='esqueceu_senha'>
+                            <Link to='/tipo'>Esqueci minha senha</Link>
+                        </div>
+                        <button>Acessar</button>
+                    </form>
+                </div>
+            </div>
+    )
+}

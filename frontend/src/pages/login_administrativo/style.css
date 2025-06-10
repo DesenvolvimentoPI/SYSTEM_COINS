@@ -1,0 +1,69 @@
+:root {
+    --main-color:#516271;
+    --primary-text-color:#f6e6c9;
+    --secondary-text-color:#191919;
+    --secondary-color:rgb(16, 60, 117);
+    --secondary-bg-color:#f2bc53;
+}
+
+.form_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_login input {
+    padding: 1.3em;
+    margin-bottom: 1em;
+    width: 550px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--secondary-bg-color);
+    color: var(--main-color);    
+}
+
+.form_login ::placeholder{
+    color: var(--main-color);
+}
+
+.form_login .inputs h2 {
+    color: var(--main-color);
+    margin-bottom: 0.3em;
+}
+
+.form_login a {
+    text-decoration: none;
+    color: var(--main-color);
+    transition: 0.2s;
+}
+
+.form_login a:hover {
+    text-decoration: underline;
+    transition: 0.2s;        
+}
+
+.form_login button {
+    margin-top: 1em;
+    padding: 0.9em;
+    width: 150px;
+    color: var(--secondary-bg-color);
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-size: 1em;
+    transition: 0.2s;
+}
+
+.form_login button:hover {
+    color: var(--main-color);
+    background-color: var(--secondary-bg-color);
+    transition: 0.2s;
+}
+
+.form_login .error-message {
+    color: var(--main-color);
+    padding: 1.5rem;
+    font-family: "Edu NSW ACT Cursive", cursive;
+}

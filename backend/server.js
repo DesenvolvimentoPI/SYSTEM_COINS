@@ -48,7 +48,7 @@ app.use('/api/pontos-gastos', pontosGastosRoutes);
 app.use('/api/produtos', produtosRoutes)
 
 try {
-    app.listen(3000, () => {
+    app.listen(3001, () => {
       console.log("✅ Servidor NODE rodando!");
     });
   } catch (err) {

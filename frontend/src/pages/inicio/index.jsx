@@ -49,7 +49,7 @@ export default function Inicio() {
                 </div>            
                 <div className="service">
                     <div className="service-info">
-                        <h4>Empresas e funcionários</h4>
+                        <h4>Gift Cards</h4>
                         <img src={Cards} alt="Gift card" />
                         <p>Imagine a liberdade de escolher o que você realmente quer! Com nossos Gift Cards, a recompensa está nas suas mãos.</p>
                     </div>
