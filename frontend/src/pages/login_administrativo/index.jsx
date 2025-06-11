@@ -20,7 +20,7 @@ export default function Login_administrativo() {
             const response = await api.post('/api/loginadmin', { email, senha });
 
             // Se o login for bem-sucedido
-            if (response.data.success) {
+            if (response.data = 200) {
                 localStorage.setItem('token', response.data.token); // Salve o token
                 localStorage.setItem('userEmail', email); // salve o email
                 console.log('Login bem-sucedido:', response.data);
@@ -28,12 +28,15 @@ export default function Login_administrativo() {
             } else {
                 // Caso falhe, deixa a variavel error com o erro.
                 setError(response.data.message || 'Credenciais inválidas.');
+                console.log(response.data)
+                console.log(response.status)
+                console.log(response.data.success)
             }
         } catch (err) {
             console.error('Erro ao realizar o login', err);
             if (err.response) {
                 // O servidor respondeu com um status de erro (ex: 400, 401, 500)
-                setError(err.response.data.message || 'Erro ao conectar com o servidor. Tente novamente.');
+                setError(err.response.data.message || 'Erro ao tentar realizar login, por favor verifique suas credenciais.');
             } else if (err.request) {
                 // A requisição foi feita, mas não houve resposta (servidor offline, CORS)
                 setError('Sem resposta do servidor. Verifique sua conexão ou tente novamente.');

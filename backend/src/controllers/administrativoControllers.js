@@ -44,6 +44,17 @@ const criarCadastroAdministrativo= async (req, res) => {
       if (resultado.recordset.length > 0) {
           return res.status(400).json({ erro: 'CPF já cadastrado.' });
       }
+
+      const resultadoAlunos = await pool.request()
+        .input('email', sql.VarChar, email)
+        .query(`
+            select * from alunos
+            where email = @email
+          `)
+
+      if (resultadoAlunos.recordset.length > 0 ){
+        return res.status(400).json({erro: 'E-mail já cadastro em alunos, por favor insira outro e-mail!'})
+      }
  
       // Faz a inserção se estiver tudo certo
       await pool.request()

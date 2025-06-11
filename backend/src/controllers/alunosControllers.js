@@ -39,7 +39,19 @@ const criarCadastroAlunos= async (req, res) => {
               SELECT * FROM alunos
               WHERE cpf = @cpf
           `);
- 
+      /* Verifica se o e-mail ja esta na tabela administrativo */
+      const resultadoAdministrativo = await pool.request()
+            .input('email', sql.VarChar, email)
+            .query( `
+                select *
+                from administrativo
+                where email = @email
+              `)
+
+      if(resultadoAdministrativo.recordset.length > 0){
+        return res.status(400).json({error: 'E-mail já cadastrado em administrativo, por favor insira outro e-mail!'})
+      }
+
       if (resultado.recordset.length > 0) {
           return res.status(400).json({ erro: 'CPF já cadastrado.' });
       }
