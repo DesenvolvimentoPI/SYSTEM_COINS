@@ -28,9 +28,6 @@ export default function Login_administrativo() {
             } else {
                 // Caso falhe, deixa a variavel error com o erro.
                 setError(response.data.message || 'Credenciais inválidas.');
-                console.log(response.data)
-                console.log(response.status)
-                console.log(response.data.success)
             }
         } catch (err) {
             console.error('Erro ao realizar o login', err);

@@ -20,7 +20,7 @@ export async function criarCurso({ nome, carga_horaria }) {
       .input('nome', nome)
       .input('carga_horaria', carga_horaria)
       .query(`
-        INSERT INTO cursos (nome, carga_horaria)
+        INSERT INTO cursos (nome_curso, quantidade_horas)
         VALUES (@nome, @carga_horaria)
       `);
   } catch (erro) {

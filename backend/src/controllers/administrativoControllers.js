@@ -49,7 +49,7 @@ const criarCadastroAdministrativo= async (req, res) => {
         .input('email', sql.VarChar, email)
         .query(`
             select * from alunos
-            where email = @email
+            where login = @email
           `)
 
       if (resultadoAlunos.recordset.length > 0 ){

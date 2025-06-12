@@ -4,7 +4,9 @@ import Tipo_login from './pages/tipo_login';
 import Login_administrativo from './pages/login_administrativo';
 import Login_aluno from './pages/login_aluno';
 import PaginaAdministrativo from './pages/administrativo';
-
+import CriarAluno from './pages/criacaoAluno';
+import CriarAdministrativo from './pages/criacaoAdministrativo';
+import CriarCurso from './pages/criarCurso';
 
 function App() {
 
@@ -16,6 +18,9 @@ function App() {
         <Route path='/loginAdministrativo' element={<Login_administrativo/>}/>
         <Route path='/loginAlunos' element={<Login_aluno/>}/>
         <Route path='/Administrativo' element={<PaginaAdministrativo/>}/>
+        <Route path='/criarAluno' element={<CriarAluno/>}/>
+        <Route path='/criarAdministrativo' element={<CriarAdministrativo/>}/>
+        <Route path='/criarCurso' element={<CriarCurso/>}/>
       </Routes>
     </Router>
   )

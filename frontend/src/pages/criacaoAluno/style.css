@@ -1,0 +1,88 @@
+:root {
+    --main-color:#516271;
+    --primary-text-color:#f6e6c9;
+    --secondary-text-color:#191919;
+    --secondary-color:rgb(16, 60, 117);
+    --secondary-bg-color:#f2bc53;
+    --moldura-color: #f7e2c1;
+}
+
+.moldura {
+    border: 2px solid var(--moldura-color);
+    padding: 50px;
+    border-radius: 20px;
+    background-color: var(--moldura-color);
+}
+
+.container-criar-alunos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: var(--primary-text-color);
+}
+
+.container-criar-alunos h1 {
+    color: var(--main-color);
+}
+
+.container-inputs-criar-aluno{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-criar-alunos p {
+    font-family: "Edu NSW ACT Cursive", cursive;
+    color: var(--secondary-bg-color);
+    font-weight: 500;
+    padding: 10px;
+}
+
+.container-criar-alunos .inputs-Criar-Aluno {
+    padding: 8px;
+}
+
+.container-criar-alunos .inputs-Criar-Aluno h2 {
+    font-size: 1em;
+    color: var(--main-color);
+}
+
+.container-criar-alunos .inputs-Criar-Aluno input {
+    width: 400px;
+    padding: 8px;
+    border: 2px solid var(--secondary-bg-color);
+    border-radius: 10px;
+    background-color: var(--secondary-bg-color);
+    transition: 0.2s;
+}
+
+.container-criar-alunos .inputs-Criar-Aluno input:hover {
+    border: 2px solid var(--main-color);
+    transition: 0.2s;
+    transform: scale(1.05);
+}
+
+.container-criar-alunos button {
+    padding: 15px;
+    width: 200px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    color: var(--secondary-bg-color);
+    background-color: var(--main-color);
+    transition: 0.2s;
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-weight: 500;
+}
+
+.container-criar-alunos button:hover {
+    background-color: var(--primary-text-color);
+    border: 2px solid var(--secondary-bg-color);
+    color: var(--main-color);
+    transition: 0.2s;
+    transform: scale(1.1);
+}
