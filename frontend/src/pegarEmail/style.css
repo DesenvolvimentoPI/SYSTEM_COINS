@@ -1,0 +1,12 @@
+:root {
+    --main-color:#516271;
+    --primary-text-color:#f6e6c9;
+    --secondary-text-color:#191919;
+    --secondary-color:rgb(16, 60, 117);
+    --secondary-bg-color:#f2bc53;
+}
+
+.form_login p {
+    font-family: "Edu NSW ACT Cursive", cursive;
+    color: var(--secondary-bg-color);
+}

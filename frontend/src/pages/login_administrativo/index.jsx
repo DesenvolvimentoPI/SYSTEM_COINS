@@ -64,7 +64,7 @@ export default function Login_administrativo() {
                             onChange={event => setSenha(event.target.value)}/>
                         </div>
                         <div className='esqueceu_senha'>
-                            <Link to='/tipo'>Esqueci minha senha</Link>
+                            <Link to='/conseguirEmailSenha'>Esqueci minha senha</Link>
                         </div>
                         {error && <p className='error-message'>{error}</p>}
                         <button type='submit'>Acessar</button>
