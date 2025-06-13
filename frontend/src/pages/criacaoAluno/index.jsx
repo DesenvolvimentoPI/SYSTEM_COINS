@@ -76,9 +76,9 @@ export default function CriarAluno(){
                         </div>
                         <div className='inputs-Criar-Aluno'>
                             <h2>Sobrenome</h2>
-                            <input type="Digite o sobrenome" 
+                            <input type="text" 
                             required
-                            placeholder='Confirme sua senha'
+                            placeholder='Digite seu sobrenome'
                             onChange={event => setSobrenome(event.target.value)}/>
                         </div>
                         <div className='inputs-Criar-Aluno'>

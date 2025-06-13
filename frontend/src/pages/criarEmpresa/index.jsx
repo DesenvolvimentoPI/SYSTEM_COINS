@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import api from '../../services/api'
 
 
-export default function CriarAdministrativo(){
+export default function CriarEmpresa(){
+    const [razao, setRazao] = useState('')
     const [nome, setNome] = useState('')
-    const [sobrenome, setSobrenome] = useState('')
-    const [cpf, setCpf] = useState('')
+    const [cnpj, setCnpj] = useState('')
+    const [endereco, setEndereco] = useState('')
+    const [complemento, setComplemento] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [confirmarSenha, setConfirmarSenha] = useState('')
@@ -15,7 +17,7 @@ export default function CriarAdministrativo(){
 
     const navigate = useNavigate()
 
-    async function handleSubmitCriarAluno(event) {
+    async function handleSubmitCriarEmpresa(event) {
         event.preventDefault();
         setError('')
 
@@ -34,20 +36,28 @@ export default function CriarAdministrativo(){
                 return setError('Sua senha deve conter um caracter especial: /[!@#$%^&*()_+\-=\[\]{};\\|,.<>\/?~]/')
             }
 
-            if (cpf.length < 11) {
-                return setError('Numeros de CPF faltando! Por favor verifique')
-            }else if (cpf.length > 11){
-                return setError('Você digitou mais de 11 digitos de CPF! Por favor verifique')
+            if (cnpj.length < 14) {
+                return setError('Numeros de CNPJ faltando! Por favor verifique')
+            }else if (cnpj.length > 14){
+                return setError('Você digitou mais de 14 digitos de CNPJ! Por favor verifique')
             }
 
-            const response = await api.post('/api/admin', {nome,sobrenome,cpf,email, senha})
+            if(endereco.length > 50){
+                setError('Campo endereço com muitos caracteres!')
+            }
+
+            if(complemento.length > 50){
+                setError('Campo complemento com muitos caracteres!')
+            }
+
+            const response = await api.post('/api/empresas', {razao, nome, cnpj, endereco, complemento, email, senha})
             
             if(response.data = 201){
-                console.log('Usuário criado com sucesso!')
-                alert('Usuário criado com sucesso!')
+                console.log('Empresa criada com sucesso!')
+                alert('Empresa criada com sucesso!')
                 navigate('/Administrativo');
             } else {
-                setError(response.data.message || 'Credenciais inválidas!');
+                setError(response.data.message || 'Campos inválidos! Por favor verifique.');
             }
         }catch(err){
             if(err.response){
@@ -56,6 +66,7 @@ export default function CriarAdministrativo(){
                 setError(err.response.message || 'Sem resposta do servidor. Verifique sua conexão!')
             } else {
                 setError('Erro ao enviar requisição, solicite ajuda ao suporte!')
+                console.log(err)
             }
         }
     }
@@ -63,36 +74,50 @@ export default function CriarAdministrativo(){
     return(
         <div className='container-criar-alunos'>
             <div className='moldura'>
-                <h1>CRIAR ADMINISTRATIVO</h1>
+                <h1>CRIAR EMPRESA</h1>
                 <p>Preencha os campos abaixo</p>
                 <div>
-                    <form onSubmit={handleSubmitCriarAluno} className='container-inputs-criar-aluno'>
+                    <form onSubmit={handleSubmitCriarEmpresa} className='container-inputs-criar-aluno'>
                         <div className='inputs-Criar-Aluno'>
-                            <h2>Nome</h2>
+                            <h2>Razão Social</h2>
                             <input type="text" 
                             required
-                            placeholder='Digite o nome'
+                            placeholder='Digite a razão social'
+                            onChange={event => setRazao(event.target.value)}/>
+                        </div>
+                        <div className='inputs-Criar-Aluno'>
+                            <h2>Nome</h2>
+                            <input type="Digite o sobrenome" 
+                            required
+                            placeholder='Digite o nome para cadastrar a empresa'
                             onChange={event => setNome(event.target.value)}/>
                         </div>
                         <div className='inputs-Criar-Aluno'>
-                            <h2>Sobrenome</h2>
+                            <h2>CNPJ</h2>
                             <input type="text" 
                             required
-                            placeholder='Digite o sobrenome'
-                            onChange={event => setSobrenome(event.target.value)}/>
+                            placeholder='Digite o CNPJ'
+                            onChange={event => setCnpj(event.target.value)}/>
                         </div>
                         <div className='inputs-Criar-Aluno'>
-                            <h2>CPF</h2>
+                            <h2>Endereço</h2>
                             <input type="text" 
                             required
-                            placeholder='Digite o CPF'
-                            onChange={event => setCpf(event.target.value)}/>
+                            placeholder='Digite o endereço da empresa'
+                            onChange={event => setEndereco(event.target.value)}/>
+                        </div>
+                        <div className='inputs-Criar-Aluno'>
+                            <h2>Complemento</h2>
+                            <input type="text" 
+                            required
+                            placeholder='Digite o complemento'
+                            onChange={event => setComplemento(event.target.value)}/>
                         </div>
                         <div className='inputs-Criar-Aluno'>
                             <h2>E-mail</h2>
                             <input type="email" 
                             required
-                            placeholder='Digite um e-mail'
+                            placeholder='Digite um E-mail'
                             onChange={event => setEmail(event.target.value)}/>
                         </div>
                         <div className='inputs-Criar-Aluno'>
@@ -110,7 +135,7 @@ export default function CriarAdministrativo(){
                             onChange={event => setConfirmarSenha(event.target.value)}/>
                         </div>
                         {error && <p className='error-message'>{error}</p>}
-                        <button type='submit'>Criar Aluno</button>
+                        <button type='submit'>Criar Empresa</button>
                     </form>
                 </div>
             </div>

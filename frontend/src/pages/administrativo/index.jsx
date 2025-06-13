@@ -12,7 +12,7 @@ export default function PaginaAdministrativo() {
                         <li><Link to='/criarAluno'>Cadastrar Aluno</Link></li>
                         <li><Link to='/criarAdministrativo'>Cadastrar Administrativo</Link></li>
                         <li><Link to='/criarCurso'>Cadastrar Curso</Link></li>
-                        <li><Link to=''>Cadastrar Empresa</Link></li>
+                        <li><Link to='/criarEmpresa'>Cadastrar Empresa</Link></li>
                     </ul>
                 </div>
             </div>

@@ -7,6 +7,7 @@ import PaginaAdministrativo from './pages/administrativo';
 import CriarAluno from './pages/criacaoAluno';
 import CriarAdministrativo from './pages/criacaoAdministrativo';
 import CriarCurso from './pages/criarCurso';
+import CriarEmpresa from './pages/criarEmpresa';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/criarAluno' element={<CriarAluno/>}/>
         <Route path='/criarAdministrativo' element={<CriarAdministrativo/>}/>
         <Route path='/criarCurso' element={<CriarCurso/>}/>
+        <Route path='/criarEmpresa' element={<CriarEmpresa/>}/>
       </Routes>
     </Router>
   )
