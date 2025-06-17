@@ -31,8 +31,6 @@ export default function Login_aluno() {
         }catch (err){
             if (err = 400){
                 setError(err.data || 'Erro ao realizar login, por favor verifique suas credenciais');
-            } else if (err.request){
-                setError(err.data.request || 'Erro ao enviar requisição, por favor entrar em contato com o suporte técnico');
             } else {
                 console.error('Erro ao realizar o login', err)
             }

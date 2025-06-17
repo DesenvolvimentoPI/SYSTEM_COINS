@@ -1,14 +1,14 @@
 import { pool } from '../database/connection.js';
 import { sql } from '../database/connection.js';
 
-const buscarEmailBusca = async(req, res) => {
+const BuscarEmailBusca = async(req, res) => {
     const {email, cpf} = req.body
     
-    if(!email || ! cpf){
+    if(!email || !cpf){
         return res.status(400).json({message: "Erro: preencha todos os campos!"})
     }
 
-    if(!email.include('@')){
+    if(!email.includes('@')){
         return res.status(400).json({message: "Erro: coloque seu e-mail com @!"})
     }
 
@@ -41,3 +41,5 @@ const buscarEmailBusca = async(req, res) => {
         res.status(500).json({error: "Erro ao buscar o usuário"})
     }
 }
+
+export default BuscarEmailBusca

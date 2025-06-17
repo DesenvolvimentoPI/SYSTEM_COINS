@@ -12,6 +12,7 @@ import cursoRoutes from './src/routes/cursoRoutes.js';
 import pontosGanhosRoutes from './src/routes/pontosGanhosRoutes.js';
 import pontosGastosRoutes from './src/routes/pontosGastosRoutes.js'
 import produtosRoutes from './src/routes/produtosRoutes.js'
+import buscarEmailBusca from "./src/routes/buscarEmail.js";
 import cors from 'cors';
 
 
@@ -46,6 +47,8 @@ app.use('/api/pontos-ganhos', pontosGanhosRoutes);
 app.use('/api/pontos-gastos', pontosGastosRoutes);
 
 app.use('/api/produtos', produtosRoutes)
+
+app.use('/api/buscarEmail', buscarEmailBusca);
 
 try {
     app.listen(3001, () => {
