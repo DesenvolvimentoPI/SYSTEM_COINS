@@ -16,8 +16,9 @@ export default function ConseguirEmailAlteraSenha(){
 
         try{
             const response =  await api.post('/api/buscarEmail', {email, cpf});
-            if (response == 201){
+            if (response.status == 201){
                 console.log('Login validado com sucesso.');
+                localStorage.setItem('userEmailForPasswordChange', email);
                 alert('Login validado com sucesso!');
                 navigate('/alterarSenha');
             }else {
