@@ -1,0 +1,312 @@
+:root {
+    --main-color: #516271;
+    --primary-text-color: #f6e6c9;
+    --secondary-text-color: #191919;
+    --secondary-color: rgb(16, 60, 117);
+    --secondary-bg-color: #f2bc53;
+
+    /* Variáveis para o tema Dark */
+    --dark-bg: #1a1a1a;
+    --dark-card-bg: #2c2c2c;
+    --dark-text: #e0e0e0;
+    --dark-secondary-text: #c0c0c0;
+    --dark-highlight: #f2bc53;
+}
+
+body {
+    background-color: var(--secondary-color);
+    color: var(--secondary-text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.painel_principal_perfilaluno {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.painel-aluno {
+    max-width: 1100px;
+    margin: -1rem auto;
+    /* Ajuste o padding-top para dar espaço ao botão no topo */
+    padding: 3.5rem 2rem 2rem 2rem; /* Top, Right, Bottom, Left */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-top: 6px solid var(--secondary-bg-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
+    position: relative; /* É crucial para que o 'position: absolute' do botão funcione em relação a ele */
+}
+
+/* **AJUSTE AQUI** - Posicionamento do botão */
+.dark-mode-toggle-container {
+    position: absolute; /* Posição relativa ao painel-aluno */
+    top: 1rem; /* Distância do topo do painel-aluno */
+    right: 1.5rem; /* Distância da direita do painel-aluno */
+    z-index: 10; /* Garante que fique acima de outros elementos */
+}
+
+.dark-mode-button {
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem; /* Um pouco menor para não ser muito grande */
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem; /* Fonte um pouco menor */
+    transition: background 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem; /* Reduz o espaçamento interno */
+}
+
+.dark-mode-button:hover {
+    background-color: #3b4a57;
+}
+
+
+/* SEÇÕES GERAIS */
+/* Não mudamos o painel-topo e o painel-saldo em si, eles continuarão a fluir normalmente */
+.painel-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.painel-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.foto-aluno {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--secondary-bg-color);
+    background-color: var(--primary-text-color);
+}
+
+.painel-info h2 {
+    margin: 0;
+    color: var(--main-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.painel-info p {
+    margin: 0.2rem 0;
+    color: var(--secondary-text-color);
+    transition: color 0.3s ease;
+}
+
+.painel-saldo {
+    background-color: var(--secondary-bg-color);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    color: var(--secondary-text-color);
+    min-width: 200px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.painel-saldo h3 {
+    margin-bottom: 0.5rem;
+    color: var(--main-color);
+    transition: color 0.3s ease;
+}
+
+
+.painel-notas,
+.painel-colunas {
+    margin-bottom: 2rem;
+}
+
+.painel-notas h3,
+.painel-box h3 {
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--secondary-bg-color);
+    padding-left: 0.5rem;
+    color: var(--main-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: border-left-color 0.3s ease, color 0.3s ease;
+}
+
+.notas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.card-nota {
+    background-color: var(--primary-text-color);
+    color: var(--secondary-text-color);
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-nota:nth-child(even) {
+    background-color: #f9f1e0;
+}
+
+.card-nota:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.painel-colunas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.painel-box {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.painel-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.painel-box p,
+.painel-box li {
+    font-size: 0.95rem;
+    color: var(--secondary-text-color);
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.painel-box ul {
+    padding-left: 1.2rem;
+    margin: 0;
+    list-style: none;
+}
+
+.painel-box li {
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- DARK MODE STYLES --- */
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+body.dark-mode .painel-aluno {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-top-color: var(--dark-highlight);
+}
+
+body.dark-mode .painel-info h2,
+body.dark-mode .painel-saldo h3,
+body.dark-mode .painel-notas h3,
+body.dark-mode .painel-box h3 {
+    color: var(--dark-highlight);
+}
+
+body.dark-mode .painel-info p,
+body.dark-mode .painel-box p,
+body.dark-mode .painel-box li {
+    color: var(--dark-secondary-text);
+}
+
+body.dark-mode .painel-saldo {
+    background-color: var(--main-color);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .painel-saldo h3 {
+    color: var(--dark-highlight);
+}
+
+
+body.dark-mode .card-nota {
+    background-color: var(--main-color);
+    color: var(--dark-text);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .card-nota:nth-child(even) {
+    background-color: #4a5b6c;
+}
+
+body.dark-mode .painel-box {
+    background-color: var(--main-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .painel-box:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .dark-mode-button {
+    background-color: var(--dark-highlight);
+    color: var(--secondary-text-color);
+}
+
+body.dark-mode .dark-mode-button:hover {
+    background-color: #d1a447;
+}
+
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .painel-aluno {
+        padding: 1.5rem; /* Ajuste o padding-top também aqui para telas pequenas */
+        padding-top: 3.5rem; /* Mantém o espaço para o botão */
+    }
+
+    .painel-topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .painel-saldo {
+        width: 100%;
+        text-align: left;
+    }
+
+    .notas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .painel-colunas {
+        grid-template-columns: 1fr;
+    }
+
+    .dark-mode-toggle-container {
+        position: absolute; /* Mantém o absolute para telas pequenas se desejar */
+        top: 1rem;
+        right: 1.5rem;
+        /* Se preferir que ele volte para o fluxo normal em telas pequenas,
+           descomente as linhas abaixo e comente as acima */
+        /*
+        position: static;
+        margin-bottom: 1rem;
+        width: 100%;
+        text-align: right;
+        */
+    }
+}

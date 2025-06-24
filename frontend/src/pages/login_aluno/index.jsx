@@ -23,7 +23,7 @@ export default function Login_aluno() {
                 localStorage.setItem('token', response.data.token); // Salve o token
                 localStorage.setItem('userEmail', email); // salve o email
                 console.log('Login realizado com sucesso');
-                navigate('/alunos');
+                navigate('/Alunos');
             }
             else{
                 setError(response.data || 'Erro ao realizar login, por favor tente novamente!');

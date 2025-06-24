@@ -1,61 +1,121 @@
+/* Variáveis CSS */
 :root {
-    --main-color:#516271;
-    --primary-text-color:#f6e6c9;
-    --secondary-text-color:#191919;
-    --secondary-color:rgb(16, 60, 117);
-    --secondary-bg-color:#f2bc53;
+    --main-color: #516271; /* Cor principal, talvez para botões e alguns textos */
+    --primary-text-color: #f6e6c9; /* Cor do texto principal */
+    --secondary-text-color: #191919; /* Cor do texto secundário */
+    --secondary-color: rgb(16, 60, 117); /* Cor secundária, talvez para fundos de elementos */
+    --accent-color: #f2bc53; /* Renomeada para "accent-color" para indicar que é uma cor de destaque, como para links e hover */
 }
 
-.container-administrativo {
+/* Container principal da página administrativa */
+.admin-page-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--primary-text-color);
+    background-color: var(--primary-text-color); /* Usando a variável para consistência */
+    padding: 20px; /* Adicionado padding para telas menores */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
 }
 
-.container-segundario-administrativo h1{
+/* Wrapper do conteúdo interno */
+.admin-content-wrapper {
+    background-color: white; /* Adicionado um fundo branco para o wrapper interno para melhor contraste */
+    padding: 40px;
+    border-radius: 15px; /* Bordas arredondadas para um visual mais suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+    text-align: center; /* Centraliza o texto dentro do wrapper */
+    max-width: 600px; /* Limita a largura para melhor legibilidade em telas grandes */
+    width: 90%; /* Responsividade básica */
+}
+
+.admin-content-wrapper h1 {
     text-align: center;
-    padding: 0.5em;
+    padding-bottom: 0.5em; /* Ajustado para padding-bottom */
     text-transform: uppercase;
     color: var(--main-color);
     font-size: 3em;
+    margin-bottom: 20px; /* Espaçamento abaixo do título */
 }
 
-.container-segundario-administrativo p {
+.admin-content-wrapper p {
     font-size: 1.5em;
     text-align: center;
-    margin-bottom: 1em;
-    font-family: "Edu NSW ACT Cursive", cursive;
-    color: var(--secondary-bg-color);
+    margin-bottom: 30px; /* Aumentado o espaçamento para melhor separação */
+    font-family: "Edu NSW ACT Cursive", cursive; /* Manteve a fonte cursiva */
+    color: var(--accent-color); /* Usando a nova variável accent-color */
 }
 
-.container-segundario-administrativo ul {
+/* Lista de navegação */
+.admin-nav-list {
     list-style-type: none;
+    padding: 0; /* Remover padding padrão da lista */
+    margin: 0; /* Remover margin padrão da lista */
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px; /* Usar gap para espaçamento entre os itens da lista */
 }
 
-.container-segundario-administrativo li {
-    margin-bottom: 50px;   
-    margin-top: 10px; 
+/* Item da lista de navegação */
+.admin-nav-item {
+    width: 100%; /* Faz com que o link ocupe toda a largura disponível */
+    max-width: 300px; /* Limita a largura máxima do item para melhor design */
 }
 
-.container-segundario-administrativo a {
+/* Estilo do link */
+.admin-nav-item a { /* Alterado para .admin-nav-item a para maior especificidade */
+    display: block; /* Faz o link ocupar todo o espaço do li */
     text-decoration: none;
-    color: #f2bc53;
-    padding: 1.2em;
+    color: var(--accent-color); /* Cor do texto do link */
+    padding: 1.2em 2em; /* Adicionado mais padding horizontal */
     border: 2px solid var(--main-color);
-    border-radius: 10px;  
+    border-radius: 10px;
     background-color: var(--main-color);
-    transition: 0.2s;
+    transition: all 0.3s ease; /* Transição mais suave e abrangente */
+    font-weight: bold; /* Deixa o texto do link mais destacado */
+    text-transform: capitalize; /* Capitaliza a primeira letra de cada palavra */
 }
 
-.container-administrativo a:hover{
+/* Efeito hover no link */
+.admin-nav-item a:hover { /* Alterado para .admin-nav-item a:hover */
     background-color: var(--primary-text-color);
-    border: 2px solid var(--main-color);
+    border-color: var(--main-color); /* Manteve a borda da cor principal */
     color: var(--main-color);
-    font-family: "Edu NSW ACT Cursive", cursive;
-    transition: 0.2s;
+    font-family: "Edu NSW ACT Cursive", cursive; /* Manteve a fonte cursiva no hover */
+    transform: translateY(-3px); /* Pequeno efeito de levantamento no hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .admin-content-wrapper {
+        padding: 25px;
+    }
+
+    .admin-content-wrapper h1 {
+        font-size: 2.5em;
+    }
+
+    .admin-content-wrapper p {
+        font-size: 1.2em;
+    }
+
+    .admin-nav-item a {
+        padding: 1em 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-content-wrapper {
+        padding: 15px;
+    }
+
+    .admin-content-wrapper h1 {
+        font-size: 2em;
+    }
+
+    .admin-content-wrapper p {
+        font-size: 1em;
+    }
 }

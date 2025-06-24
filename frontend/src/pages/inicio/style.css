@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Inter:wght@100..900&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+
 :root {
-    --main-color:#516271;
-    --primary-text-color:#f6e6c9;
-    --secondary-text-color:#191919;
-    --secondary-color:rgb(16, 60, 117);
-    --secondary-bg-color:#f2bc53;
+    --main-color: #516271;
+    --primary-text-color: #f6e6c9; /* Esta cor será para o rodapé */
+    --secondary-text-color: #191919;
+    --secondary-color: rgb(16, 60, 117);
+    --secondary-bg-color: #f2bc53;
+    --tertiary-color: #4a5c6b;
+    --white-color: #fff;
+    --gradient-start: #f6e6c9; /* primary-text-color */
+    --gradient-middle: #f2bc53; /* secondary-bg-color */
+    --gradient-end: #516271; /* main-color */
 }
 
 * {
@@ -13,35 +22,50 @@
     box-sizing: border-box;
 }
 
+/* Define o fundo principal da página com gradiente */
+.container-principal {
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-middle) 60%, var(--gradient-end));
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
 i {
     background-color: var(--main-color);
     color: var(--primary-text-color);
     font-size: 1.5rem;
     padding: 1rem;
+    border-radius: 5px;
 }
 
-/* id */
-.header{
+/* Header - Revertido para usar a imagem como destaque */
+.header {
     min-height: 90vh;
-    background-image: url("../../assets/banner.jpg");
+    background-image: url("../../assets/banner.jpg"); /* Caminho para sua imagem de banner */
     background-size: cover;
     background-position: center;
     color: var(--primary-text-color);
     margin-bottom: 2rem;
+    position: relative;
+    /* Removido background-blend-mode e background-color aqui */
 }
 
-.inner-header{
-    /* padrão linha */
+.inner-header {
     display: flex;
-    /* alinhamento é horizontal, eixo x */
     justify-content: space-between;
-    /* alinhamento vertical, eixo y */
     align-items: center;
+    padding: 1rem 2rem;
+    flex-wrap: wrap;
+    position: relative; /* Para garantir que o z-index funcione se necessário */
+    z-index: 10; /* Para o header ficar acima do banner textual */
 }
 
 .brand {
     background-color: var(--main-color);
     padding: 1rem;
+    color: var(--primary-text-color);
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-size: 2rem;
+    border-radius: 5px;
 }
 
 .navbar {
@@ -51,156 +75,199 @@ i {
     margin-right: 2rem;
 }
 
-.navbar a {
-    color: var(--main-colorprimary-text-color);
-    padding: 1rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    font-family: "Edu NSW ACT Cursive", cursive;
-    transition: 0.2s;
-    padding: 5px;
-    border: 4px solid var(--primary-text-color);
-    border-radius: 20px;
-}
-
-
-.navbar a:hover {
-    color: var(--secondary-bg-color);
-    background-color: #516271;
-    border: #f2bc53;
-    font-weight: bolder;
-    transition: 0.2s;
-}
-
 .navbar ul {
     list-style-type: none;
+    display: flex;
+    gap: 1.5rem;
 }
 
 .navbar li {
-  display: inline-block;
-  margin-right: 10px;
+    display: inline-block;
 }
 
-.banner.active{
-    opacity: 1; /* banner ativo é mostrado */
+.navbar a {
+    color: var(--main-color);
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    transition: 0.2s;
+    border: 2px solid var(--main-color);
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
-.banner{
-    max-width: 45%;
-    opacity: 0;
+.navbar a:hover {
+    color: var(--secondary-bg-color);
+    background-color: var(--main-color);
+    border-color: var(--secondary-bg-color);
+    font-weight: bolder;
+    transform: translateY(-2px);
+}
+
+/* Banner (bloco de texto) - Posicionado sobre a imagem de fundo do header */
+.banner {
+    max-width: 45%; /* Como na imagem original */
     padding: 4rem;
     position: absolute;
+    top: 50%;
+    left: 10%; /* Posicionado para a esquerda */
+    transform: translateY(-50%);
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay escuro para garantir legibilidade sobre a imagem */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidade */
+    z-index: 5; /* Abaixo do header-inner, mas acima da imagem de fundo */
 }
 
-.banner h2{
-    font-size: 4rem;
+.banner h2 {
+    font-size: 4rem; /* Como na imagem original */
     margin-bottom: 1.2rem;
     position: relative;
-    z-index:2;
-}
-
-.banner p{
-    font-size: 1.5rem;
-    color: var(--main-color);
+    z-index: 2;
+    color: var(--primary-text-color);
     font-family: "Edu NSW ACT Cursive", cursive;
 }
 
-.square{
-    display:block;
-    width: 150px;
-    height: 150px;
-    background-color: var(--main-color);
+.banner p {
+    font-size: 1.5rem; /* Como na imagem original */
+    color: var(--primary-text-color);
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+}
+
+.square {
+    display: block;
+    width: 150px; /* Como na imagem original */
+    height: 150px; /* Como na imagem original */
+    background-color: var(--main-color); /* Usando a cor principal */
     position: absolute;
-    left: 20px;
-    top: 40px;
-    z-index:1;
+    left: 20px; /* Como na imagem original */
+    top: 40px; /* Como na imagem original */
+    z-index: 1;
+    border-radius: 8px;
+    transform: none; /* Resetar transform, posicionamento fixo */
+    opacity: 0.8; /* Levemente transparente */
 }
 
 
-/* Áreas de atuação */
-.section-title{
+/* Expertise Areas / Product Section */
+.expertise-areas {
+    padding: 2rem 1rem;
+    background-color: transparent;
+}
+
+.expertise-information {
+    margin-bottom: 3rem;
+}
+
+.section-title {
     color: var(--main-color);
     text-transform: uppercase;
     text-align: center;
-    font-size: 3em;
-    margin-bottom: 20px;
-}
-.section-subtitle{
-    color: var(--secondary-text-color);
-    font-size: 1.7rem;
-    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    font-family: "Edu NSW ACT Cursive", cursive;
 }
 
-.other-services{
+.section-subtitle {
+    color: var(--secondary-text-color);
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: "Inter", sans-serif;
+}
+
+.other-services {
     width: 100%;
     display: flex;
-    gap:2rem;
+    flex-wrap: wrap;
+    gap: 2rem;
     padding: 2rem;
-    align-items: center;
     justify-content: center;
+    align-items: stretch;
+}
+
+.service {
+    position: relative;
+    background-color: var(--main-color);
+    flex: 1;
+    min-width: 300px;
+    max-width: 380px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
 }
 
 .other-services img {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 4px solid var(--secondary-bg-color);
+}
+
+.service-info {
+    background-color: var(--main-color);
+    padding: 1.5rem;
+    min-height: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service h4 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--secondary-bg-color);
+    font-family: "Edu NSW ACT Cursive", cursive;
 }
 
 .other-services p {
-    font-size: 1.3em;
+    font-size: 1.1em;
     text-align: center;
     color: var(--primary-text-color);
+    line-height: 1.5;
+    font-family: "Inter", sans-serif;
 }
 
-.other-services h4 {
-    text-align: center;
-    color: var(--secondary-bg-color);
-}
-
-.service{
-    position: relative;
-    background-color: var(--main-color);
-}
-
-
-.service-info{
-    background-color: var(--tertiary-color);
-    padding: 2rem 1.4rem;
-    min-height: 250px;
-}
-
-.service h4{
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-}
-
-
-/* Colaboradores */
+/* Team Section */
 .team {
     position: relative;
-    margin-bottom: 2rem;
-  }
-  
-  .team h2 {
-    font-size: 3rem;
+    margin-bottom: 4rem;
+    padding: 2rem 1rem;
+    background-color: transparent;
+    color: var(--secondary-text-color);
+}
+
+.team h2 {
+    font-size: 2.8rem;
     text-align: center;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-  }
-  
-  .team h2 span {
+    line-height: 1.3;
+    font-family: "Edu NSW ACT Cursive", cursive;
+    color: var(--secondary-text-color);
+}
+
+.team h2 span {
     color: var(--main-color);
-  }
-  
-  .team p {
+}
+
+.team p {
     text-align: center;
-    margin-top: 30px;
-    font-size: 3em;
+    margin-top: 1.5rem;
+    font-size: 2.5em;
     color: var(--secondary-bg-color);
     font-family: "Edu NSW ACT Cursive", cursive;
-  }
+}
 
 /* Rodapé */
 .footer {
@@ -208,134 +275,346 @@ i {
     background-color: var(--primary-text-color);
     display: flex;
     justify-content: space-around;
-    padding: 3rem 3rem 5rem;
-  }
-  
-  
-  .footer a {
-    color: var(--primary-text-color);
-  }
-  
-  .contact-info,
-  .links-container {
-    width: 20%;
-  }
-  
-  .footer-brand {
-    margin-bottom: 2rem;
-  }
-  
-  .footer-brand h2 {
+    padding: 3rem 2rem 4rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer a {
+    color: var(--main-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: var(--secondary-bg-color);
+}
+
+.contact-info,
+.links-container {
+    width: 28%;
+    min-width: 280px;
+}
+
+.footer-brand {
+    margin-bottom: 1.5rem;
+}
+
+.footer-brand h2 {
     background-color: var(--main-color);
     margin-bottom: 0.5rem;
-    padding: 1rem;
-    color: #f2bc53;
-  }
-  
-  .contact-info p {
-    margin-bottom: 1rem;
-  }
-  
-  .contact-info p i {
+    padding: 0.8rem 1rem;
+    color: var(--secondary-bg-color);
+    font-family: "Edu NSW ACT Cursive", cursive;
+    font-size: 1.8rem;
+    border-radius: 5px;
+}
+
+.footer-brand p {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    color: var(--secondary-text-color);
+}
+
+.contact-info p i {
     background-color: transparent;
     padding: 0;
     color: var(--main-color);
-  }
-  
-  .social-networks p {
-    margin-bottom: 1rem;
-  }
-  
-  .networks {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .footer .networks i {
-    padding: 1rem;
-  }
-  
-  .links-container h4 {
+    font-size: 1.2rem;
+    margin-right: 0.8rem;
+}
+
+.links-container h4 {
     text-transform: uppercase;
-    margin-bottom: 3rem;
-  }
-  
-  .links-container nav {
+    margin-bottom: 1.5rem;
+    color: var(--main-color);
+    font-family: "Inter", sans-serif;
+}
+
+.links-container nav {
     display: flex;
     flex-direction: column;
-  }
-  
-  .links-container nav a {
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+}
+
+.links-container nav a {
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
     border-bottom: 1px solid var(--secondary-color);
-  }
-  
-  .phone-number {
+    color: var(--secondary-text-color);
+    font-family: "Inter", sans-serif;
+}
+
+.phone-number {
     display: flex;
     border: 1px solid var(--main-color);
     gap: 1rem;
     align-items: center;
     margin-bottom: 1rem;
-  }
-  
-  .phone-info {
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.phone-number i {
+    background-color: transparent;
+    padding: 0;
+    color: var(--main-color);
+    font-size: 1.2rem;
+}
+
+.phone-number p {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+.phone-info {
     color: var(--secondary-color);
-  }
-  /* Mobile navbar */
-  .menu,
-  .close-menu{
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+
+/* Mobile Navbar */
+.menu-icon {
+    display: none;
     font-size: 2rem;
-    padding: 1rem;
-    display:none;
-  }
-  .close-menu{
-    position:absolute;
-    top:0;
-    right:0;
-  }
-  .mobile-navbar{
-    position:fixed;
-    top:0;
-    left:100%;
-    height:100%;
+    color: var(--primary-text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: var(--main-color);
+}
+
+.mobile-navbar {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.95);
+    background-color: rgba(0, 0, 0, 0.95);
     display: flex;
     flex-direction: column;
     padding: 4rem 2rem;
-    transition: 0.4s;
-    z-index: 3;
-  }  
-  .mobile-navbar.menu-active{
-    left:0;
-  }
-  .mobile-navbar a{
-    color: var(--primary-text-color);
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--main-color);
-  }
-  .mobile-navbar.menu-active{
-    left:0;
-  }
-  .mobile-navbar a{
-    color: var(--primary-text-color);
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--main-color);
-  }
+    transition: left 0.4s ease-in-out;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
 
-  /* PG Serviços titulo */
-  .titulo-pg {
+.mobile-navbar.menu-active {
+    left: 0;
+}
+
+.close-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    color: var(--primary-text-color);
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0;
+}
+
+.mobile-navbar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-navbar li {
+    margin-bottom: 1.5rem;
+}
+
+.mobile-navbar a {
+    color: var(--primary-text-color);
+    font-size: 1.8rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--main-color);
+    display: block;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: "Inter", sans-serif;
+}
+
+.mobile-navbar a:hover {
+    color: var(--secondary-bg-color);
+}
+
+/* PG Serviços titulo */
+.titulo-pg {
     text-align: center;
     font-weight: bolder;
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: var(--main-color);
     margin-bottom: 2rem;
-  }
+    font-family: "Edu NSW ACT Cursive", cursive;
+}
+
+/* Responsive Adjustments (Media Queries) */
+@media (max-width: 1024px) {
+    .banner {
+        max-width: 60%;
+        padding: 3rem;
+        left: 5%;
+    }
+
+    .banner h2 {
+        font-size: 3rem;
+    }
+
+    .banner p {
+        font-size: 1.2rem;
+    }
+
+    .other-services {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service {
+        width: 90%;
+        max-width: 450px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-info,
+    .links-container {
+        width: 80%;
+        margin-bottom: 2rem;
+    }
+
+    .footer-brand {
+        margin-bottom: 1rem;
+    }
+
+    .links-container h4 {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .banner {
+        position: static;
+        transform: none;
+        max-width: 100%;
+        padding: 2rem 1rem;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        margin-top: 1rem;
+    }
+
+    .banner h2 {
+        font-size: 2.5rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+    }
+
+    .square {
+        display: none;
+    }
+
+    .brand {
+        font-size: 1.5rem;
+    }
+
+    /* Ajuste para o menu de navegação responsivo */
+    .mobile-navbar a {
+        color: var(--primary-text-color);
+    }
+
+    .section-title {
+        font-size: 2.2em;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .team h2 {
+        font-size: 2rem;
+    }
+
+    .team p {
+        font-size: 2em;
+    }
+
+    .footer-brand h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info p,
+    .phone-info {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        min-height: 70vh;
+    }
+
+    .banner {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .banner h2 {
+        font-size: 2rem;
+    }
+
+    .banner p {
+        font-size: 0.9rem;
+    }
+
+    .service {
+        width: 95%;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .team h2 {
+        font-size: 1.6rem;
+    }
+
+    .team p {
+        font-size: 1.5em;
+    }
+
+    .footer {
+        padding: 2rem 1rem 3rem;
+    }
+
+    .contact-info,
+    .links-container {
+        min-width: unset;
+        width: 95%;
+    }
+}

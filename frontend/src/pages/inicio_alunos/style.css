@@ -1,0 +1,336 @@
+/* CSS Variables for consistent theming */
+:root {
+    --main-color: #516271;
+    --primary-text-color: #f6e6c9;
+    --secondary-text-color: #191919;
+    --secondary-color: rgb(16, 60, 117);
+    --secondary-bg-color: #f2bc53;
+    --success-color: #4CAF50; /* Green for success */
+    --error-color: #f44336;   /* Red for error */
+}
+
+/* Basic Reset for Body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* A more common fallback font */
+}
+
+/* Keyframes for the subtle floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px); /* Moves up 8px */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Keyframes for saldo update animation */
+@keyframes saldo-update {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; color: var(--success-color); } /* Flash green */
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* Main Container for the entire page content */
+.alunos {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the container takes at least the full viewport height */
+    background-color: var(--primary-text-color);
+    align-items: center; /* Centers content horizontally */
+    position: relative; /* Needed for absolute positioning of feedback message */
+}
+
+/* Top Menu Bar Styles */
+.menu-alunos {
+    display: flex;
+    justify-content: space-between; /* Pushes left and right items to the edges */
+    align-items: center; /* Vertically align items in the menu */
+    width: 100%;
+    padding: 15px 30px;
+    box-sizing: border-box; /* Includes padding in the element's total width */
+    background-color: var(--secondary-color);
+    color: var(--primary-text-color); /* Default text color for the menu */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Slight shadow for the header */
+    z-index: 10; /* Ensure it stays on top */
+}
+
+.alunos-esquerda .brand {
+    color: var(--secondary-bg-color);
+    margin: 0;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.alunos-direita {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligns text and image to the right within its column */
+    gap: 5px; /* Space between elements */
+}
+
+.alunos-direita img {
+    width: 50px;
+    height: 50px; /* Ensure a square aspect ratio for border-radius */
+    object-fit: cover; /* Cover the area if image is not square */
+    border-radius: 50%; /* Makes the image round */
+    border: 2px solid var(--secondary-bg-color); /* Small border for icon */
+}
+
+.alunos-direita h3 {
+    color: var(--primary-text-color);
+    margin: 0;
+    font-weight: normal;
+}
+
+.alunos-direita p {
+    font-family: "Edu NSW ACT Cursive", cursive; /* Assuming this font is imported or available */
+    color: var(--primary-text-color);
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.alunos-direita span.saldo-value { /* Added class for targeting animation */
+    color: var(--secondary-bg-color);
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition for color changes */
+}
+
+/* --- Feedback Message Styles --- */
+.feedback-message {
+    position: absolute;
+    top: 70px; /* Adjust based on your header height */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 100; /* Ensure it's on top of everything */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    opacity: 0; /* Start hidden */
+    animation: fadeInOut 3s forwards; /* Animation for appearing and disappearing */
+}
+
+.feedback-message.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.feedback-message.error {
+    background-color: var(--error-color);
+    color: white;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+    10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
+
+/* Subtitle for the product section */
+.subtitle-alunos {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    color: var(--main-color);
+    font-size: 2.2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Container for product rows */
+.fundo-troca-produtos {
+    width: 85vw; /* Increased width to utilize more screen space */
+    max-width: 1200px; /* Max width for larger screens to prevent overstretching */
+    background-color: #e4d4b8; /* Light brown background for the product grid */
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allows products to wrap to the next line */
+    gap: 20px; /* Space between product cards */
+    align-items: flex-start; /* Align items to the top of the flex line */
+    justify-content: center; /* Center items within the container if they don't fill the row */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 30px; /* Space between product rows and before footer */
+}
+
+.fundo-troca-produtos.second-row {
+    margin-top: 0; /* No extra top margin for the second row */
+    margin-bottom: 50px; /* Slightly more space before the footer */
+}
+
+/* Individual Product Card Styles */
+.troca-produtos {
+    flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis for responsiveness */
+    max-width: 250px; /* Max width for individual product cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff; /* White background for product cards */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+    text-align: center;
+    height: auto; /* Allow height to adjust to content */
+    
+    /* Apply the continuous floating animation */
+    animation: float 3s ease-in-out infinite;
+    /* Use the CSS variable for staggered delay, defaulting to 0s if not set */
+    animation-delay: var(--animation-delay, 0s);
+}
+
+.troca-produtos:hover {
+    transform: translateY(-10px) scale(1.03); /* Lift and slightly scale more on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    animation-play-state: paused; /* Pause the continuous animation on hover */
+}
+
+.troca-produtos img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* Ensures the entire image is visible within its box */
+    margin-bottom: 10px;
+}
+
+.troca-produtos h3 {
+    margin: 10px 0;
+    text-transform: uppercase;
+    color: var(--main-color);
+    font-size: 1.1em;
+}
+
+.troca-produtos p {
+    color: var(--secondary-bg-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Style for product cost when insufficient */
+.troca-produtos p .insufficient-points {
+    color: var(--error-color); /* Red text for insufficient points */
+}
+
+
+.troca-produtos button {
+    background-color: var(--main-color);
+    color: var(--primary-text-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, opacity 0.3s ease; /* Add opacity transition */
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.troca-produtos button:hover:not(:disabled) { /* Apply hover only if not disabled */
+    background-color: var(--secondary-color); /* Darker on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.troca-produtos button:active:not(:disabled) { /* Apply active only if not disabled */
+    transform: translateY(0); /* Press effect */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for disabled button */
+.troca-produtos button.disabled-button {
+    background-color: #ccc; /* Grey background */
+    cursor: not-allowed; /* No-entry cursor */
+    opacity: 0.7; /* Slightly faded */
+    transform: none; /* No hover/active effect */
+    box-shadow: none;
+}
+.troca-produtos button.disabled-button:hover {
+    background-color: #ccc; /* Ensure it stays grey on hover */
+}
+
+
+/* Footer Styles */
+.footer-alunos {
+    width: 100%;
+    background-color: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+    color: var(--secondary-bg-color); /* Text color for the footer */
+    margin-top: auto; /* Pushes the footer to the bottom of the flex container */
+    flex-shrink: 0; /* Prevents the footer from shrinking */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2); /* Shadow on top of footer */
+}
+
+.footer-alunos h1 {
+    font-family: "Edu NSW ACT Cursive", cursive;
+    color: inherit; /* Inherit color from parent */
+    margin: 0;
+    font-size: 1.5em;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-width: 768px) {
+    .menu-alunos {
+        flex-direction: column; /* Stack menu items vertically */
+        align-items: center;
+        padding: 15px;
+    }
+
+    .alunos-direita {
+        margin-top: 15px;
+        align-items: center; /* Center items when stacked */
+    }
+
+    .subtitle-alunos {
+        font-size: 1.8em;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .fundo-troca-produtos {
+        width: 95vw;
+        padding: 15px;
+        flex-direction: column; /* Stack product cards vertically on smaller screens */
+        align-items: center;
+        gap: 15px; /* Reduce gap when stacked */
+    }
+
+    .troca-produtos {
+        max-width: 90%; /* Allow product cards to take more width */
+        width: 100%; /* Ensure they stretch */
+        margin-bottom: 0; /* Gap handles spacing */
+    }
+
+    .footer-alunos h1 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .alunos-esquerda .brand {
+        font-size: 1.8em;
+    }
+
+    .subtitle-alunos {
+        font-size: 1.5em;
+    }
+
+    .alunos-direita img {
+        width: 40px;
+        height: 40px;
+    }
+    .alunos-direita h3, .alunos-direita p {
+        font-size: 0.9em;
+    }
+}

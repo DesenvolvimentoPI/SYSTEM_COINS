@@ -10,6 +10,8 @@ import CriarCurso from './pages/criarCurso';
 import CriarEmpresa from './pages/criarEmpresa';
 import ConseguirEmailAlteraSenha from './pages/pegarEmail';
 import AlterarSenha from './pages/mudarSenha';
+import Inicio_alunos from './pages/inicio_alunos';
+import PerfilAluno from './pages/perfilAluno';
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
         <Route path='/criarEmpresa' element={<CriarEmpresa/>}/>
         <Route path='/conseguirEmailSenha' element={<ConseguirEmailAlteraSenha/>}/>
         <Route path='/alterarSenha' element={<AlterarSenha/>}/>
+        <Route path='/Alunos' element={<Inicio_alunos/>}/>
+        <Route path='/AlunoPerfil' element={<PerfilAluno/>}/>
       </Routes>
     </Router>
   )
