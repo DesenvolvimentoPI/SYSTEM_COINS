@@ -14,16 +14,19 @@ export default function ConseguirEmailAlteraSenha(){
         event.preventDefault();
         setError('');
 
-        try{
-            const response =  await api.post('/api/buscarEmail', {email, cpf});
-            if (response.status == 201){
+        // Adicione este console.log para verificar o valor do 'email' antes de enviar
+        console.log('Email a ser enviado para buscar:', email); 
+
+        try {
+            const response = await api.post('/api/buscarEmail', { email, cpf });
+            if (response.status === 201) {
                 console.log('Login validado com sucesso.');
                 localStorage.setItem('userEmailForPasswordChange', email);
                 alert('Login validado com sucesso!');
                 navigate('/alterarSenha');
-            }else {
-                setError(response.data.message)
-            }
+        } else {
+            setError(response.data.message);
+        }
         }catch(err){
             if(err.response){
                 setError(err.response.data.message || 'Erro ao tentar realizar o cadastro!');

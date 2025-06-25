@@ -1,0 +1,145 @@
+/* Variáveis de cores */
+:root {
+    --main-color: #516271;
+    --primary-text-color: #f6e6c9;
+    --secondary-text-color: #191919;
+    --secondary-color: rgb(16, 60, 117);
+    --secondary-bg-color: #f2bc53;
+}
+
+/* Estilos específicos para o container do Alterar Senha */
+.change-password-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o container ocupe a altura total da viewport */
+    width: 100%;
+    padding: 20px;
+    background-color: var(--main-color); /* Apenas o container terá essa cor de fundo */
+    color: var(--primary-text-color); /* Apenas o container terá essa cor de texto */
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+    font-family: Arial, sans-serif; /* Apenas o container e seus filhos usarão essa fonte */
+}
+
+/* Formulário */
+.password-form {
+    background-color: var(--secondary-color);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+}
+
+.password-form h1 {
+    color: var(--secondary-bg-color);
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.password-form p {
+    color: var(--primary-text-color);
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+/* Grupos de input */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: var(--primary-text-color);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--primary-text-color);
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: var(--primary-text-color);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+}
+
+.input-group input::placeholder {
+    color: rgba(246, 230, 201, 0.7);
+}
+
+.input-group input:focus {
+    border-color: var(--secondary-bg-color);
+}
+
+/* Botão */
+.password-form button {
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura */
+}
+
+.password-form button:hover {
+    background-color: #e0a73b; /* Um tom ligeiramente mais escuro para o hover */
+    transform: translateY(-2px);
+}
+
+/* Mensagem de erro */
+.error-message {
+    color: #ff6b6b; /* Um vermelho vibrante para erros */
+    margin-top: 15px;
+    font-size: 0.95em;
+    font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .password-form {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    .password-form h1 {
+        font-size: 1.8em;
+    }
+
+    .password-form p {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .input-group input {
+        padding: 10px 12px;
+    }
+
+    .password-form button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 400px) {
+    .password-form {
+        padding: 20px;
+    }
+
+    .password-form h1 {
+        font-size: 1.6em;
+    }
+}

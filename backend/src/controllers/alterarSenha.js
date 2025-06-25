@@ -29,7 +29,7 @@ const AlterarSenha = async(req, res) => {
                 WHERE email = @email;
             `);
 
-            if (result.rowsAffected[0] === 0) {
+            if (result.rowsAffected == 0) {
                 return res.status(404).json({ message: "Erro: Usuário não encontrado para este e-mail." });
             }
     
